@@ -4,7 +4,6 @@
 # However, you can buy it then immediately sell it on the same day.
 # Find and return the maximum profit you can achieve.
 
-
 def max_profit(prices):
     i = 0
     credit = 0
