@@ -4,9 +4,6 @@
 # However, you can buy it then immediately sell it on the same day.
 # Find and return the maximum profit you can achieve.
 
-def buy(price):
-    pass
-
 
 def max_profit(prices):
     i = 0
@@ -22,16 +19,21 @@ def max_profit(prices):
             buy_price = prices[i]
             i += 1
             continue
-        elif prices[i] > buy_price > prices[i + 1] and stock:
+        elif (buy_price < curr > next and stock):
             stock = False
-            credit += prices[i]
-            buy_price = prices[i]
+            buy_price = curr
+            credit += buy_price
             i += 1
             continue
         i += 1
+    if stock:
+        stock = False
+        buy_price = next
+        credit += buy_price
     return credit
 
-print(max_profit([7, 1, 5, 3, 6, 4]))
-print(max_profit([1,2,3,4,5]))
 
-# Input: prices = [7,1,5,3,6,4] Output: 7
+assert max_profit([6, 1, 3, 2, 4, 7]) == 7
+assert max_profit([7, 1, 5, 3, 6, 4]) == 7
+assert max_profit([1, 2, 3, 4, 5]) == 4
+assert max_profit([1, 2]) == 1
