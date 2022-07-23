@@ -11,14 +11,14 @@ def max_profit(prices):
     stock = False
     while i < len(prices) - 1:
         curr = prices[i]
-        next = prices[i + 1]
-        if curr < next and not stock:
+        nxt = prices[i + 1]
+        if curr < nxt and not stock:
             stock = True
             credit -= prices[i]
             buy_price = prices[i]
             i += 1
             continue
-        elif (buy_price < curr > next and stock):
+        elif buy_price < curr > nxt and stock:
             stock = False
             buy_price = curr
             credit += buy_price
@@ -26,8 +26,7 @@ def max_profit(prices):
             continue
         i += 1
     if stock:
-        stock = False
-        buy_price = next
+        buy_price = nxt
         credit += buy_price
     return credit
 
