@@ -1,8 +1,5 @@
 def contains_duplicates(nums: list[int]) -> bool:
-    while nums:
-        if nums.pop() in nums:
-            return True
-    return False
+    return False if len(set(nums)) == len(nums) else True
 
 
 assert contains_duplicates([1, 2, 3, 4, 1]) == True
