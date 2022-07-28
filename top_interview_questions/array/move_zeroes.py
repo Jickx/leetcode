@@ -4,12 +4,13 @@
 
 
 def move_zeroes(nums: list[int]) -> list[int]:
-    count_zero = nums.count(0)
-    for i in range(count_zero):
-        nums.remove(0)
-        nums.append(0)
+    ctr = 0
+    for i in range(len(nums)):
+        if nums[i]:
+            nums[i], nums[ctr] = nums[ctr], nums[i]
+            ctr += 1
     return nums
 
 
-print(move_zeroes([0, 1, 0, 2, 3, 0, 4, 5, 6]))
-print(move_zeroes([0, 0, 1]))
+assert move_zeroes([0, 1, 0, 2, 3, 0, 4, 5, 6]) == [1, 2, 3, 4, 5, 6, 0, 0, 0]
+assert move_zeroes([0, 0, 1]) == [1, 0, 0]
