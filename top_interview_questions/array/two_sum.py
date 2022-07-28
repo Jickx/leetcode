@@ -5,13 +5,13 @@
 # You can return the answer in any order.
 
 def two_sum(nums: list[int], target: int) -> list[int]:
-    for i, el1 in enumerate(nums):
-        for j, el2 in enumerate(nums):
-            if i != j:
-                if el1 + el2 == target:
-                    return [i, j]
+    for i, el in enumerate(nums):
+        nums_tup = tuple(nums)
+        num = target - el
+        if num in nums_tup and i != nums.index(num):
+            return [i, nums.index(num)]
 
 
-print(two_sum([2, 7, 11, 15], 9))  # [0, 1]
-print(two_sum([3, 2, 4], 6))  # [1, 2]
-print(two_sum([3, 3], 6))  # [0, 1]
+assert two_sum([2, 7, 11, 15], 9) == [0, 1] or [1, 0]
+assert two_sum([3, 2, 4], 6) == [1, 2] or [2, 1]
+assert two_sum([3, 3], 6) == [0, 1] or [1, 0]
