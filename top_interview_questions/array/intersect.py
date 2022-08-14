@@ -14,15 +14,19 @@
 
 
 def intersect(nums1: list[int], nums2: list[int]) -> list[int]:
-    result = []
-    while nums1:
-        el1 = nums1.pop()
-        for i, el2 in enumerate(nums2):
-            if el1 == el2:
-                nums2[i] = None
-                result.append(el1)
-                break
-    return result
+    output = []
+    dict_nums1 = {}
+    dict_nums2 = {}
+    for i in nums1:
+        dict_nums1[i] = dict_nums1.get(i, 0) + 1
+    for i in nums2:
+        dict_nums2[i] = dict_nums2.get(i, 0) + 1
+    for key in dict_nums1:
+        if key not in dict_nums2:
+            continue
+        ctr = min(dict_nums1[key], dict_nums2[key])
+        output.extend([key] * ctr)
+    return output
 
 
 assert intersect([1, 2, 2, 1], [2, 2]) == [2, 2]
