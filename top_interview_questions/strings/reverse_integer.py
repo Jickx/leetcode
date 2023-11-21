@@ -2,23 +2,14 @@ from icecream import ic
 
 
 def reverse_integer(num):
-    if num == 0:
+    rev_num = int(str(num)[::-1].strip('-'))
+
+    if rev_num > 2 ** 32:
         return 0
 
-    if num != abs(num):
-        pos = False
-    else:
-        pos = True
-
-    num_str = str(num).lstrip('-').lstrip('0')
-    rev_num_str = int(num_str[::-1])
-
-    if rev_num_str >= 2 ** 31 - 1 or rev_num_str <= -2 ** 31:
-        return 0
-
-    if pos:
-        return rev_num_str
-    return -rev_num_str
+    if num > 0:
+        return rev_num
+    return -rev_num
 
 
 assert reverse_integer(-123) == -321
