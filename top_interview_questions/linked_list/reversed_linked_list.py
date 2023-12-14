@@ -9,17 +9,13 @@ ll = ListNode(1, ListNode(2, ListNode(3, ListNode(4, ListNode(5)))))
 
 def reverse_list(head: [ListNode]) -> [ListNode]:
     current = head
-    l = []
+    prev = None
     while current:
-        l.append(current.val)
-        current = current.next
-
-    def index(l):
-        if not l:
-            return None
-        return ListNode(l.pop(), index(l))
-
-    return index(l)
+        next_node = current.next
+        current.next = prev
+        prev = current
+        current = next_node
+    return prev
 
 
 x = reverse_list(ll)
