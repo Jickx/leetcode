@@ -7,13 +7,16 @@ class ListNode:
 list = ListNode(1, ListNode(2, ListNode(2, ListNode(1))))
 
 
-def is_palindrome(head) -> bool:
-    result = []
-    while head:
-        result.append(head.val)
-        head = head.next
-    print(result)
-    return True if result == result[::-1] else False
+def is_palindrome(list):
+    fast = slow = prev =list
+    while fast.next:
+        slow = slow.next
+        fast = fast.next.next
+    slow.next = None
+    while fast.next != slow:
+
+
+
 
 
 print(is_palindrome(list))
